@@ -10,14 +10,15 @@ const connection = require("./config/database");
 const configViewEngine = require("./config/ViewEngine");
 
 //========================import các route
-const taiKhoanRote = require("./routes/AdminRoute/adminRoute");
-const khoaadminAPIRoute = require("./routes/AdminRoute/KhoaRoute");
+const taiKhoanRoter = require("./routes/AdminRoute/adminRoute");
+const khoaRouter = require("./routes/AdminRoute/KhoaRoute");
 //============================
 
 const corsOptions = {
   origin: process.env.URL_REACT, // Cho phép truy cập từ tất cả các nguồn
   credentials: true, // Cho phép gửi cookie
 };
+
 //===============================sử dụng các dependency
 app.use(cors()); //config cors cho tất cả truy cập
 app.use(cookieParser());
@@ -29,8 +30,8 @@ configViewEngine(app);
 //===============================
 
 // ------------------route config
-taiKhoanRote(app) // route dành cho admin CRUD bảng tài khoảng
-app.use("/admin/khoa", khoaadminAPIRoute);
+taiKhoanRoter(app) // route dành cho admin CRUD bảng tài khoảng
+khoaRouter(app) //route CRUD bảng khoa
 //----------------------------------------
 
 app.get("/", (req, res) => {

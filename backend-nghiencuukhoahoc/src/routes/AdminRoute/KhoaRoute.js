@@ -8,8 +8,14 @@ const {
 } = require("../../controllers/AdminController/khoaAdminCONTROLLER");
 
 //login cho admin
-router.get("/xem-khoa", getAllKHOA);
-router.post("/tao-khoa", createKHOA);
-router.put("/sua-khoa/:makhoa", updateKHOA);
-router.delete("/xoa-khoa", deleteKHOA);
-module.exports = router;
+const khoaRouter = (app) => {
+
+  router.get("/xem-khoa", getAllKHOA);
+  router.post("/tao-khoa", createKHOA);
+  router.put("/sua-khoa/:makhoa", updateKHOA);
+  router.delete("/xoa-khoa", deleteKHOA);
+
+  return app.use("/api/v1/khoa", router);
+}
+
+module.exports = khoaRouter;
