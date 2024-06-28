@@ -8,8 +8,11 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const connection = require("./config/database");
 const configViewEngine = require("./config/ViewEngine");
-const adminAPIRoute = require("./routes/AdminRoute/adminRoute");
+
+//========================import các route
+const taiKhoanRote = require("./routes/AdminRoute/adminRoute");
 const khoaadminAPIRoute = require("./routes/AdminRoute/KhoaRoute");
+//============================
 
 const corsOptions = {
   origin: process.env.URL_REACT, // Cho phép truy cập từ tất cả các nguồn
@@ -24,8 +27,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 configViewEngine(app);
 //===============================
+
 // ------------------route config
-app.use("/admin", adminAPIRoute); // route dành cho admin
+taiKhoanRote(app) // route dành cho admin CRUD bảng tài khoảng
 app.use("/admin/khoa", khoaadminAPIRoute);
 //----------------------------------------
 

@@ -7,8 +7,14 @@ const {
 } = require("../../controllers/AdminController/adminController.js");
 
 //login cho admin
-router.get("/tai-khoan", getAllTaiKhoanController);
-router.post("/tao-tai-khoan", createTaiKhoanController);
-router.put("/sua-tai-khoan/:tenDangNhap", updateTaiKhoanController);
+const taiKhoanRote = (app) => {
 
-module.exports = router;
+  router.get("/tai-khoan", getAllTaiKhoanController);
+  router.post("/tao-tai-khoan", createTaiKhoanController);
+  router.put("/sua-tai-khoan/:tenDangNhap", updateTaiKhoanController);
+
+  return app.use("/api/v1/taikhoan", router);
+}
+
+
+module.exports = taiKhoanRote;
