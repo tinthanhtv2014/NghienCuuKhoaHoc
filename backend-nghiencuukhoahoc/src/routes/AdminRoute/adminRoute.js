@@ -10,9 +10,9 @@ const {
 // Phần hàm này đang có tranh cãi với Phúc 28/6/2024
 const taiKhoanRoter = (app) => {
 
-  router.get("/xem-tai-khoan", getAllTaiKhoanController);
-  router.post("/tao-tai-khoan", createTaiKhoanController);
-  router.put("/sua-tai-khoan/:tenDangNhap", updateTaiKhoanController);
+  router.get("/xem", getAllTaiKhoanController);
+  router.post("/tao", createTaiKhoanController);
+  router.put("/sua/:tenDangNhap", updateTaiKhoanController);
 
   return app.use("/api/v1/taikhoan", router);
 }

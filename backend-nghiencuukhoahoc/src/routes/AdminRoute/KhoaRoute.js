@@ -10,10 +10,10 @@ const {
 //login cho admin
 const khoaRouter = (app) => {
 
-  router.get("/xem-khoa", getAllKHOA);
-  router.post("/tao-khoa", createKHOA);
-  router.put("/sua-khoa/:makhoa", updateKHOA);
-  router.delete("/xoa-khoa", deleteKHOA);
+  router.get("/xem", getAllKHOA);
+  router.post("/tao", createKHOA);
+  router.put("/sua/:makhoa", updateKHOA);
+  router.delete("/xoa", deleteKHOA);
 
   return app.use("/api/v1/khoa", router);
 }
